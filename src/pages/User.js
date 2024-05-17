@@ -7,11 +7,9 @@ function User() {
   const { slug } = useParams();
   const [user, setUser] = useState([]);
   const [repos, setRepos] = useState([]);
-  const token = '';
   const navigate = useNavigate();
   
   useEffect(() => {
-    const options = {headers: { Authorization: `Bearer ${token}`}};
     const fetchUser = async (slug) => {
       try {
         const [userResponse, reposResponse] = await Promise.all([
