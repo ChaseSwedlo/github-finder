@@ -36,7 +36,7 @@ function User() {
         year: 'numeric'
     };
     return new Intl.DateTimeFormat('en-US', options).format(new Date(date));
-}
+  }
 
   return (
     <motion.div 
@@ -72,28 +72,30 @@ function User() {
         <p>User data not found</p>
       )}
       <section className='repos'>
-      <h2>My repositories</h2>
-      {repos ? (
-        repos.length > 0 ? (
-          repos.map(repo => (
-            <div className='repo' key={repo.id}>
-              <div className='flex sb'>
-                <a href={repo.html_url} target="_blank" rel="noreferrer">
-                  <h3>{repo.name}</h3>
-                </a>
-                <span className='date'>{formatDate(repo.updated_at)}</span>
-              </div>
-              {repo.description !== null && <p>{repo.description}</p>}
-            </div>
-          ))
-        ) : (
-        <div className='repo'>
-          <h3>No repositories</h3>
-        </div>)
-        ) : (
-        <p>User data not found</p>
-      )
-      }
+        <h2>My repositories</h2>
+        <ul>
+        {repos ? (
+          repos.length > 0 ? (
+            repos.map(repo => (
+              <li className='repo' key={repo.id}>
+                <div className='flex sb'>
+                  <a href={repo.html_url} target="_blank" rel="noreferrer">
+                    <h3>{repo.name}</h3>
+                  </a>
+                  <span className='date'>{formatDate(repo.updated_at)}</span>
+                </div>
+                {repo.description !== null && <p>{repo.description}</p>}
+              </li>
+            ))
+          ) : (
+          <div className='repo'>
+            <h3>No repositories</h3>
+          </div>)
+          ) : (
+          <p>User data not found</p>
+        )
+        }
+        </ul>
       </section>
     </motion.div>
   );
