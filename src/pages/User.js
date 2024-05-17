@@ -8,15 +8,13 @@ function User() {
   const [user, setUser] = useState([]);
   const [repos, setRepos] = useState([]);
   const navigate = useNavigate();
-  const token = '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';
   
   useEffect(() => {
-    const options = {headers: { Authorization: `Bearer ${token}`}};
     const fetchUser = async (slug) => {
       try {
         const [userResponse, reposResponse] = await Promise.all([
-          axios.get(`https://api.github.com/users/${slug}`, options),
-          axios.get(`https://api.github.com/users/${slug}/repos`, options)
+          axios.get(`https://api.github.com/users/${slug}`),
+          axios.get(`https://api.github.com/users/${slug}/repos`)
         ]);
         setUser(userResponse.data);
         setRepos(reposResponse.data);
