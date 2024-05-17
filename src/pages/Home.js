@@ -6,14 +6,13 @@ import { motion } from 'framer-motion';
 
 function Home() {
   const [isValid, setIsValid] = useState(true);
-  const token = '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';
+  const token = '';
   const options = { headers: { Authorization: `Bearer ${token}` } };
   const navigate = useNavigate();
 
   const fetchUser = async (userInput) => {
     try {
-      const response = await axios.get(`https://api.github.com/users/${userInput}`, options);
-      console.log('API response data:', response.data);
+      const response = await axios.get(`https://api.github.com/users/${userInput}`);
       setIsValid(true);
       navigate(`/user/${userInput}`);
     } catch (error) {

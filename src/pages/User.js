@@ -7,7 +7,7 @@ function User() {
   const { slug } = useParams();
   const [user, setUser] = useState([]);
   const [repos, setRepos] = useState([]);
-  const token = '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';
+  const token = '';
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -15,10 +15,9 @@ function User() {
     const fetchUser = async (slug) => {
       try {
         const [userResponse, reposResponse] = await Promise.all([
-          axios.get(`https://api.github.com/users/${slug}`, options),
-          axios.get(`https://api.github.com/users/${slug}/repos`, options)
+          axios.get(`https://api.github.com/users/${slug}`),
+          axios.get(`https://api.github.com/users/${slug}/repos`)
         ]);
-        console.log('API response data:', reposResponse.data);
         setUser(userResponse.data);
         setRepos(reposResponse.data);
       } catch (error) {
