@@ -45,7 +45,7 @@ function User() {
       animate={{ 
         opacity: 1, 
         y: 0,
-        transition: { duration: 0.4, delay: 1.1 }
+        transition: { duration: 0.4, delay: 0.9 }
       }}
       exit={{ 
         opacity: 0, 

@@ -9,7 +9,7 @@ function App() {
   return (
     <main>
       <div className="container">
-        <AnimatePresence>
+        <AnimatePresence mode='wait'>
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<Home />} />
             <Route path="/user/:slug" element={<User />} />
